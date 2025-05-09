@@ -23,45 +23,6 @@ Options -Indexes
 # =========================
 
 
-
-# =========================
-# BEGIN BOT PROTECTION
-# =========================
-
-# Identify bad bots by User-Agent (set environment variable)
-SetEnvIfNoCase User-Agent "MJ12bot" bad_bot
-SetEnvIfNoCase User-Agent "AhrefsBot" bad_bot
-SetEnvIfNoCase User-Agent "SemrushBot" bad_bot
-SetEnvIfNoCase User-Agent "DotBot" bad_bot
-SetEnvIfNoCase User-Agent "BLEXBot" bad_bot
-SetEnvIfNoCase User-Agent "YandexBot" bad_bot
-SetEnvIfNoCase User-Agent "spbot" bad_bot
-SetEnvIfNoCase User-Agent "Mail.RU" bad_bot
-
-# Block known bad bots
-<Limit GET POST>
-  Order Allow,Deny
-  Allow from all
-  Deny from env=bad_bot
-</Limit>
-
-# Challenge aggressive bots with a CAPTCHA or warning page
-# RewriteEngine On
-# RewriteCond %{HTTP_USER_AGENT} ^.*(MJ12bot|AhrefsBot|SemrushBot|DotBot|BLEXBot|YandexBot|spbot|Mail.RU).*$ [NC]
-# RewriteRule ^(.*)$ /captcha.php [R=302,L]
-
-# Challenge bots unless already verified
-RewriteCond %{REQUEST_URI} !^/captcha.php$
-RewriteCond %{HTTP_COOKIE} !verified_human [NC]
-RewriteCond %{HTTP_USER_AGENT} ^.*(MJ12bot|AhrefsBot|SemrushBot|DotBot|BLEXBot|YandexBot|spbot|Mail.RU).*$ [NC]
-RewriteRule ^(.*)$ /captcha.php [R=302,L]
-
-# =========================
-# END BOT PROTECTION
-# =========================
-
-
-
 # =========================
 # BEGIN REWRITE & ROUTING
 # =========================
