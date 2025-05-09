@@ -1,0 +1,22 @@
+@media (max-width: 600px) {
+    body {
+        padding: 0.5rem;
+    }
+
+    .nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .product-card h2 {
+        font-size: 1rem;
+    }
+
+    .product-card p {
+        font-size: 0.9rem;
+    }
+
+    .button {
+        width: 100%;
+    }
+}

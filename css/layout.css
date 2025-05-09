@@ -1,0 +1,30 @@
+/* Page Layout */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+nav {
+    background-color: #ee9b00;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+}
+
+.nav li {
+    margin-right: 1rem;
+}
+
+footer {
+    background-color: #94d2bd;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+}
