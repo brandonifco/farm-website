@@ -1,1 +1,130 @@
-ErrorDocument 404 /404.php
+DirectoryIndex index.php
+
+# =========================
+# BEGIN SECURITY
+# =========================
+
+# Block access to sensitive files
+<FilesMatch "^\.env|\.git|composer\.(json|lock)|.*\.bak$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Deny access to config and server files
+<FilesMatch "\.(htaccess|htpasswd|ini|log|conf|env)$">
+  Require all denied
+</FilesMatch>
+
+# Disable directory browsing
+Options -Indexes
+
+# =========================
+# END SECURITY
+# =========================
+
+
+
+# =========================
+# BEGIN BOT PROTECTION
+# =========================
+
+# Identify bad bots by User-Agent (set environment variable)
+SetEnvIfNoCase User-Agent "MJ12bot" bad_bot
+SetEnvIfNoCase User-Agent "AhrefsBot" bad_bot
+SetEnvIfNoCase User-Agent "SemrushBot" bad_bot
+SetEnvIfNoCase User-Agent "DotBot" bad_bot
+SetEnvIfNoCase User-Agent "BLEXBot" bad_bot
+SetEnvIfNoCase User-Agent "YandexBot" bad_bot
+SetEnvIfNoCase User-Agent "spbot" bad_bot
+SetEnvIfNoCase User-Agent "Mail.RU" bad_bot
+
+# Block known bad bots
+<Limit GET POST>
+  Order Allow,Deny
+  Allow from all
+  Deny from env=bad_bot
+</Limit>
+
+# Challenge aggressive bots with a CAPTCHA or warning page
+# RewriteEngine On
+# RewriteCond %{HTTP_USER_AGENT} ^.*(MJ12bot|AhrefsBot|SemrushBot|DotBot|BLEXBot|YandexBot|spbot|Mail.RU).*$ [NC]
+# RewriteRule ^(.*)$ /captcha.php [R=302,L]
+
+# Challenge bots unless already verified
+RewriteCond %{REQUEST_URI} !^/captcha.php$
+RewriteCond %{HTTP_COOKIE} !verified_human [NC]
+RewriteCond %{HTTP_USER_AGENT} ^.*(MJ12bot|AhrefsBot|SemrushBot|DotBot|BLEXBot|YandexBot|spbot|Mail.RU).*$ [NC]
+RewriteRule ^(.*)$ /captcha.php [R=302,L]
+
+# =========================
+# END BOT PROTECTION
+# =========================
+
+
+
+# =========================
+# BEGIN REWRITE & ROUTING
+# =========================
+
+# Force HTTPS (uncomment if SSL is set up)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Remove trailing slashes for SEO consistency
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# Rewrite all requests to index.php (clean URLs)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# =========================
+# END REWRITE & ROUTING
+# =========================
+
+
+
+# =========================
+# BEGIN CACHING
+# =========================
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType application/x-javascript "access plus 1 month"
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header unset ETag
+</IfModule>
+FileETag None
+
+# =========================
+# END CACHING
+# =========================
+
+
+
+# =========================
+# BEGIN RATE LIMITING (Optional)
+# =========================
+
+# Basic IP-based blacklisting (manual)
+<RequireAll>
+  Require all granted
+  Require not ip 203.0.113.10
+  Require not ip 198.51.100.22
+</RequireAll>
+
+# =========================
+# END RATE LIMITING
+# =========================
