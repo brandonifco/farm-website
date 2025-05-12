@@ -29,6 +29,19 @@
     font-size: 1.1rem;
     margin-bottom: 1rem;
 }
+
+/* Center the “View” + “Add to Cart” buttons in each product card */
+.card-actions {
+    display: flex;
+    /* already set inline, but harmless to repeat */
+    justify-content: center;
+    /* <- NEW: centers the buttons horizontally   */
+    gap: 0.5rem;
+    /* keep a little space between them           */
+    margin-top: 0.5rem;
+    /* optional – adds a bit of breathing room    */
+}
+
 .cart-thumb {
     width: 80px;
     height: auto;
