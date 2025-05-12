@@ -121,9 +121,27 @@ if (!empty($_SESSION['cart'])) {
         <p><strong>Total:</strong> $<?php echo number_format($total, 2); ?></p>
         <button type="submit" name="update_cart" class="button">Update Cart</button>
     </form>
+        <!-- Empty Cart button -->
+        <form method="post" action="empty-cart.php" id="empty-cart-form" style="display:inline;">
+            <button type="submit" class="button danger" id="empty-cart-btn">Empty Cart</button>
+        </form><br>
+        
 
     <a href="checkout.php" class="button">Proceed to Checkout</a>
 
 </section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('empty-cart-btn');
+    if (!btn) return;
+
+    btn.addEventListener('click', function (e) {
+        if (!confirm('Are you sure you want to empty your cart?')) {
+            e.preventDefault();   // stop submission if they hit “Cancel”
+        }
+    });
+});
+</script>
+
 
 <?php include '../includes/footer.php'; ?>

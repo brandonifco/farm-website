@@ -47,3 +47,10 @@
     height: auto;
     object-fit: cover;
 }
+button.danger {
+    background: #c0392b;
+}
+
+button.danger:hover {
+    background: #e74c3c;
+}
