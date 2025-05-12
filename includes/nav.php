@@ -9,7 +9,15 @@
             <li><a href="/contact/index.php">Contact</a></li>
         </ul>
         <ul class="nav" style="display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0;">
-            <li><a href="/store/cart.php">🛒 Cart</a></li>
+            <?php
+            // Total quantity of items in the cart
+            $cartCount = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
+            ?>
+            <li>
+                <a href="/store/cart.php">
+                    🛒 Cart<?php echo $cartCount ? " ($cartCount)" : ''; ?>
+                </a>
+            </li>
             <?php if (!empty($_SESSION['admin'])): ?>
                 <li><a href="/admin/dashboard.php">Dashboard</a></li>
                 <li><a href="/admin/logout.php">Logout</a></li>

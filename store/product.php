@@ -1,4 +1,5 @@
-<?php include '../includes/header.php'; ?>
+<?php include '../includes/header.php';
+require_once __DIR__ . '/../includes/responsive-image.php'; ?>
 
 <?php
 // Get the product ID from the URL
@@ -18,23 +19,25 @@ foreach ($products as $item) {
 ?>
 
 <?php if ($product): ?>
-<section class="product-detail">
-    <h1><?php echo htmlspecialchars($product['title']); ?></h1>
-    <img src="<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['title']); ?>">
-    <p><strong>Price:</strong> $<?php echo number_format($product['price'], 2); ?></p>
-    <p><?php echo htmlspecialchars($product['description']); ?></p>
-    <form method="post" action="cart.php">
-    <input type="hidden" name="add_id" value="<?php echo $product['id']; ?>">
-    <label for="quantity">Quantity:</label>
-    <input type="number" name="quantity" value="1" min="1" required>
-    <button type="submit" class="button">Add to Cart</button>
-</form>
-</section>
+    <section class="product-detail">
+        <h1><?php echo htmlspecialchars($product['title']); ?></h1>
+        <?php echo responsiveImage($product['image'], $product['title']); ?>
+        <p><strong>Price:</strong> $<?php echo number_format($product['price'], 2); ?></p>
+        <p><?php echo htmlspecialchars($product['description']); ?></p>
+        <form class="add-to-cart-form" method="post" action="#">
+            <input type="hidden" name="add_id" value="<?php echo $product['id']; ?>">
+            <label for="quantity">Quantity:</label>
+            <input type="number" name="quantity" value="1" min="1" required>
+            <button type="submit" class="button" id="add-btn">Add to Cart</button>
+        </form>
+    </section>
 <?php else: ?>
-<section>
-    <h1>Product Not Found</h1>
-    <p>We couldn’t find the product you’re looking for.</p>
-</section>
+    <section>
+        <h1>Product Not Found</h1>
+        <p>We couldn’t find the product you’re looking for.</p>
+    </section>
 <?php endif; ?>
+
+<script src="/js/store.js" defer></script>
 
 <?php include '../includes/footer.php'; ?>

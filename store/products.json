@@ -3,49 +3,63 @@
         "id": 1,
         "title": "Lavender Goat Milk Soap",
         "price": 8,
-        "image": "\/assets\/images\/sample-soap.jpg",
-        "description": "Soothing soap made with our own goat milk and organic lavender."
+        "image": "\/assets\/images\/goat_milk_soap_lavender.jpg",
+        "description": "Soothing soap made with our own goat milk and organic lavender.",
+        "weight": "",
+        "shipping dimensions": ""
     },
     {
         "id": 2,
         "title": "Raw Wildflower Honey",
         "price": 12,
-        "image": "\/assets\/images\/sample-honey.jpg",
-        "description": "100% raw honey harvested from our free-range bees."
+        "image": "\/assets\/images\/raw_wildflower_honey.jpg",
+        "description": "100% raw honey harvested from our free-range bees.",
+        "weight": "",
+        "shipping dimensions": ""
     },
     {
         "id": 1746660512,
         "title": "Fermented Garlic",
         "price": 14,
-        "image": "..\/assets\/images\/fermented-garlic.jpg",
-        "description": "Fermented organic garlic in our own raw wildflower honey."
+        "image": "..\/assets\/images\/fermented_garlic.jpg",
+        "description": "Fermented organic garlic in our own raw wildflower honey.",
+        "weight": "",
+        "shipping dimensions": ""
     },
     {
         "id": 1746748696,
         "title": "Herbal Hand Salve",
         "price": 6.5,
-        "image": "\/images\/salve.jpg",
-        "description": "Soothing salve made with calendula and beeswax"
+        "image": "\/assets\/images\/herbal_hand_salve.jpg",
+        "description": "Soothing salve made with calendula and beeswax",
+        "weight": "",
+        "shipping dimensions": ""
     },
     {
         "id": 1746751046,
         "title": "Elderberry Syrup",
         "price": 17,
-        "image": "\/images\/syrup.jpg",
-        "description": "Immune-booting elderberry syrup made with raw honey"
+        "image": "\/assets\/images\/elderberry_syrup.jpg",
+        "description": "Immune-booting elderberry syrup made with raw honey",
+        "weight": "",
+        "shipping dimensions": ""
     },
     {
         "id": 1746745344,
         "title": "Lavender Sachet",
         "price": 4,
-        "image": "\/images\/sachet.jpg",
-        "description": "Aromatic lavender sachet for drawers and pillows"
+        "image": "\/assets\/images\/lavender_sachet.jpg",
+        "description": "Aromatic lavender sachet for drawers and pillows",
+        "weight": "",
+        "shipping dimensions": ""
     },
     {
         "id": 1746749359,
         "title": "Goat Milk Lotion",
         "price": 9.29,
-        "image": "\/images\/lotion.jpg",
-        "description": "Nourishing lotion made with goat milk and almond oil"
+        "image": "\/assets\/images\/goat_milk_lotion.jpg",
+        "description": "Nourishing lotion made with goat milk and almond oil",
+        "weight": "",
+        "shipping dimensions": ""
     }
 ]
